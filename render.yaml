@@ -1,6 +1,6 @@
 databases:
   - name: wikijs_db
-    plan: free
+    plan: basic
     region: singapore
     databaseName: wikijs
     user: wikijs
