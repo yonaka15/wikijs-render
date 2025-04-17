@@ -1,0 +1,38 @@
+databases:
+  - name: wikijs_db
+    plan: free
+    region: singapore
+    databaseName: wikijs
+    user: wikijs
+
+services:
+  - type: web
+    name: wikijs
+    plan: free
+    runtime: image
+    image:
+      url: ghcr.io/requarks/wiki
+    region: singapore
+    envVars:
+      - key: DB_TYPE
+        value: postgres
+      - key: DB_HOST
+        fromDatabase:
+          name: wikijs_db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: wikijs_db
+          property: port
+      - key: DB_USER
+        fromDatabase:
+          name: wikijs_db
+          property: user
+      - key: DB_PASS
+        fromDatabase:
+          name: wikijs_db
+          property: password
+      - key: DB_NAME
+        fromDatabase:
+          name: wikijs_db
+          property: database
